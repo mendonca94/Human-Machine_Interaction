@@ -1,2 +1,9 @@
-# Human-Machine_Interaction
-Project Human Machine Interaction
+# WEBSITE - barISTa
+
+College: Instituto Superior Técnico
+
+Discipline: Human-Machine Interaction
+
+Programming Language: HTML, CSS, JavaScript
+
+Objective: Website that simulate a bar table which have a touch screen ans its possible to ask drinks, food and play games.
