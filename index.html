@@ -1,0 +1,570 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/barista.css">
+		<script src="js/jquery-2.2.1.js"></script>
+		<script src="js/jquery.corner.js"></script>
+		<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+		<script src="js/barista.js"></script>
+	</head>
+	<body>
+		<div id="logo">
+			<h1>Barista</h1>
+		</div>
+		
+		<div id="global">
+			<div id="global-inner">
+				<div id="table">
+					<div id="table_center">
+						<div id="on">
+							<img id="onBtn" src="images/onBtn.png">
+							<h1 id="touch_start">Toque para come&ccedil;ar</h1>
+						</div>
+						
+						<div id="welcome">
+							<h1>Bem vindo ao Barista</h1>
+						</div>
+						
+						<div id="after_welcome">
+							<h1 id="time">
+								<script>
+									document.write(getTime());
+								</script>
+							</h1>
+							<h1 id="temperature">22 celcius</h1>
+						</div>
+					</div>
+					
+					<div id="top" class="user_space">
+						<div id="t_left"></div>
+						<div id="t_center"></div>
+						<div class="table_right" id="t_right">
+							<label id="top_number">3</label>
+						</div>
+					</div>
+					
+					<div id="left" class="user_space">
+						<div id="l_left"></div>
+						
+						<div id="l_center">
+							<div id="l_menu_container">
+								<div id="l_menu_entry">Pedido</div>
+							</div>
+							<img id="swipe" src="images/swipe.png"></img>
+						</div>
+						
+						<div class="table_right" id="l_right">
+							<label id="left_number">2</label>
+						</div>	
+					</div>
+					
+					<div id="bottom" class="user_space">
+						<div id="b_left">
+							<input type="button" id="help" value="Ajuda"/>
+							<input type="button" id="home" value="Inicio"/>
+							<input type="button" id="back" value="Voltar" onclick="getBack()"/>
+						</div>
+						
+						<div id="b_center">
+<!--****************************************************************************************************************************************************************************-->
+<!--                                                                                 MUSICBOX                                                                                   -->
+<!--****************************************************************************************************************************************************************************-->
+							<div id="mBoxInside">
+								<div class="sectionTitle">
+									<h2>MusicBox</h2>
+								</div>
+								<input type="button" id="mBox_add" value="Adicionar musica" onclick="mBoxAdd()"/>
+								<input type="button" id="mBox_list" value="Ver lista" onclick="mBoxList()"/>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+							</div>
+
+							<div id='mBoxAdd'>
+								<div class="sectionTitle">
+									<h2>Adicionar M&uacute;sica</h2>
+								</div>
+								<div class="tables" id="singers">
+									<table>
+										<tr id="linha_principal_2">
+											<th class="header_table_2">Artistas</th>
+										</tr>
+									</table>
+								</div>
+								<div class="tables" id="musics">
+									<table></table>
+								</div>
+
+								<input id="insertMusics" class="button" type="button" value="Inserir na lista de reprodu&ccedil;&atilde;o" onclick="showConfirmation('Tem a certeza que quer adicionar as m&uacute;sicas &aacute; lista de reprodu&ccedil;&atilde;o?', 'getCheckedMusics')"/>
+							</div>
+
+							<div id="mBoxList">
+								<div class="sectionTitle">
+									<h2>Musicas do bar</h2>
+								</div>
+								<div class="tables">
+									<table>
+										<tr id="linha_principal_2">
+											<th class="header_table_2">Posi&ccedil;&atilde;o</th>
+											<th class="header_table_2">Cantor</th>
+											<th class="header_table_2">M&uacute;sica</th>
+											<th class="header_table_2">Tempo</th>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<div id="mBoxHelp"></div>
+<!--****************************************************************************************************************************************************************************-->
+<!--                                                                                 JOGOS                                                                                      -->
+<!--****************************************************************************************************************************************************************************-->
+							<div id="gameInside">
+								<div class="sectionTitle">
+									<h2>Jogos</h2>
+								</div>
+
+								<input type="button" id="dardos_button" value="Dardos" onclick='gameDardos()'/>
+								<input type="button" id="snooker_button" value="Snooker" onclick='gameSnooker()'/>
+								<input type="button" id="quiz_button" value="Quiz" onclick='gameQuiz()'/>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+
+								<!--<input type="button" id="game_dardos" value="Dardos" onclick="gameDardos()"/></br>
+								<input type="button" id="game_snooker" value="Snooker" onclick="gameSnooker()"/></br>
+								<input type="button" id="game_quiz" value="Quiz" onclick="gameQuiz()"/>-->
+							</div>
+
+							<div id="gameDardos">
+								<div class="sectionTitle">
+									<h2>Dardos</h2>
+								</div>
+								<div id="form_askDardos">
+									<!--<div id="nr_dardos">
+										<label>Quantos dardos deseja?</label>
+										<select>
+											<option selected="selected" disabled>Selecione uma opcao</option>
+											<option value="2">2</option>
+											<option value="2">3</option>
+											<option value="2">4</option>
+											<option value="2">5</option>
+											<option value="2">6</option>
+											<option value="2">7</option>
+											<option value="2">8</option>
+											<option value="2">9</option>
+											<option value="2">10</option>
+										</select>
+									</div>-->
+									<!--<div id="dardos_price">
+										<label>Preco: X</label>
+									</div>-->
+									<div id="dardos_availability">
+										<label>N&uacute;mero de jogadores?</label>
+										<select>
+											<option selected="selected" disabled>Selecione uma opcao</option>
+											<option value="2">2</option>
+											<option value="2">3</option>
+											<option value="2">4</option>
+											<option value="2">5</option>
+											<option value="2">6</option>
+										</select>
+									</div>
+									<input  id="botao_dardos" class="button "onclick="askDardos()" type="button" value="Pedir">
+								</div>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+							</div>
+
+							<div id="gameSnooker">
+								<div class="sectionTitle">
+									<h2>Snooker</h2>
+								</div>
+								<div id="form_askSnooker">
+									<div id="nr_tacos">
+										<label>N&uacute;mero de jogadores?</label>
+										<select>
+											<option selected="selected" disabled>Selecione uma opcao</option>
+											<option value="2">2</option>
+											<option value="2">3</option>
+											<option value="2">4</option>
+											<option value="2">5</option>
+											<option value="2">6</option>
+										</select>
+									</div>
+									<!--<div id="dardos_price">
+										<label>Preco: X</label>
+									</div>-->
+									<input id="botao_snooker" class="button "onclick="askSnooker()" type="button" value="Pedir">
+								</div>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+							</div>
+
+							<div id="gameQuiz">
+								<div class="sectionTitle">
+									<h2>Quiz</h2>
+								</div>
+								<div id="quizIndex">
+									<label>Responda corretamente a 3 perguntas e pode ganhar um produto a sua escolha!</label>
+									<input type="button" class="button" id="gameOn" value="Iniciar Quiz" onclick="question1()"/>
+									<input type="button" class="button"  id="gameCancel" value="Cancelar" onclick="getBack()"/>
+								</div>
+								<div id="quizQ1">
+									<div class="nrQuestion">
+										<label><b>Quiz - Pergunta 1/3</b></label>
+										<input type="button" class="closeGame" onclick="showConfirmation('Tem a certeza que quer sair?', 'getBack')">
+									</div>
+									<div class="wQuestion1">
+										<label>Texto</label>
+										<!--<img id="imgQuestion" src="#"></img>-->
+									</div>
+									<div class="aQuestion1">
+										<label>respostas</label>
+									</div>
+									<input type="button" class="button" id="nextQuestion1" value="Proxima pergunta" onclick="question2()"/>
+								</div>
+								<div id="quizQ2">
+									<div class="nrQuestion">
+										<label><b>Quiz - Pergunta 2/3</b></label>
+										<input type="button" class="closeGame" onclick="showConfirmation('Tem a certeza que quer sair?', 'getBack')">
+									</div>
+									<div class="wQuestion1">
+										<label>Texto</label>
+										<!--<img id="imgQuestion2" src="#"></img>-->
+									</div>
+									<div class="aQuestion1">
+										<label>respostas</label>
+									</div>
+									<input type="button" class="button" id="previousQuestion2" value="Pergunta anterior" onclick="question1()"/>
+									<input type="button" class="button" id="nextQuestion2" value="Proxima pergunta" onclick="question3()"/>
+								</div>
+								<div id="quizQ3">
+									<div class="nrQuestion">
+										<label><b>Quiz - Pergunta 3/3</b></label>
+										<input type="button" class="closeGame" onclick="showConfirmation('Tem a certeza que quer sair?', 'getBack')">
+									</div>
+									<div class="wQuestion1">
+										<label>Texto</label>
+										<!--<img id="imgQuestion3" src="#"></img>-->
+									</div>
+									<div class="aQuestion1">
+										<label>respostas</label>
+									</div>
+									<input type="button" class="button" id="previousQuestion3" value="Pergunta anterior" onclick="question2()"/>
+									<input type="button" class="button" id="nextQuestion3" value="Terminar" onclick="ConfirmationQuiz('Tem a certeza que quer terminar o Quiz, com as respostas selecionadas?','awardMessage')"/>
+								</div>
+								<div id="awardGame">
+									<label>Parabens! Acertou as 3 perguntas do Quiz e acabou de ganhar uns amendoins!</label>
+									<input id="botao_award" class="button "onclick="askNow()" type="button" value="Pedir">
+									<input id="botao_award_later" class="button "onclick="askLater()" type="button" value="Pedir mais tarde">
+								</div>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+							</div>
+<!--****************************************************************************************************************************************************************************-->
+<!--                                                                                 PEDIDO                                                                                     -->
+<!--****************************************************************************************************************************************************************************-->
+							<div id="pedidoInside">
+								<div class="sectionTitle">
+									<h2>Pedido</h2>
+								</div>
+								<div id="pedidoArea">
+									<div id="pedidoType">
+										<label> Refrigerantes </label>
+									</div>
+									<div id="pedidoTypeList">
+										<table id="display-table" class="tabelaProdutos">
+											<tr class="selected" onclick="updateDrinkInfo('cocacola')">
+												<td>Coca-cola</td>
+											</tr>
+											<tr onclick="updateDrinkInfo('icedtea')">
+												<td>Iced Tea</td>
+											</tr>
+											<tr onclick="updateDrinkInfo('b')">
+												<td>B!</td>
+											</tr>
+											<tr onclick="updateDrinkInfo('somersbi')">
+												<td>Somersbi</td>
+											</tr>
+											<tr onclick="updateDrinkInfo('compal')">
+												<td>Compal</td>
+											</tr>
+											<tr onclick="updateDrinkInfo('superbock')">
+												<td>SuperBock</td>
+											</tr>
+											<tr onclick="updateDrinkInfo('7up')">
+												<td style="border-bottom:0px">7Up</td>
+											</tr>
+										</table>
+									</div>
+									<div id="pedidoChoice">
+										<div id="detailProduto">
+											<div id="imgProduto">
+												<img src="images/cola.png" id="fotosProduto"></img>
+											</div>
+
+											<div id="diferentType">
+												<select id="cocacola" autofocus required class="tipoBebida">
+													<!--<option selected>Escolha o tipo de Coca-Cola</option>-->
+													<option selected>Coca-Cola original</option>
+													<option>Coca-Cola sem cafeina</option>
+													<option>Coca-Cola Light</option>
+													<option>Coca-Cola Zero</option>
+													<option>Coca-Cola Zero sem cafeina</option>
+												</select>
+
+												<select id="icedtea" autofocus required class="tipoBebida">
+													<!--<option selected>Escolha o sabor do Iced Tea</option>-->
+													<option selected="">P&ecirc;ssego</option>
+													<option>Lim&atilde;o</option>
+												</select>
+
+												<select id="b" autofocus required class="tipoBebida">
+													<!--<option selected>Escolha o sabor do B!</option>-->
+													<option selected>Laranja</option>
+													<option>Lim&atilde;o</option>
+													<option>Frutos Vermelhos</option>
+												</select>
+
+												<select id="compal" autofocus required class="tipoBebida">
+													<!--<option selected>Escolha o sabor do Compal</option>-->
+													<option selected>P&ecirc;ssego</option>
+													<option>P&ecirc;ra</option>
+												</select>
+											</div>
+
+											<div id="priceProduto">
+												<div id="quantidade">
+													<label>Quantidade</label>
+													<form>
+    													<input type="button" class="minus" onclick="decrementa(textb.value)">
+    													<input type="number" id="textb" name="name" value="1" />
+    													<input type="button" class="plus" onclick="incrementa(textb.value)">
+    												</form>
+												</div>
+												<div id="preco">
+													<label>Pre&ccedil;o</label></br>
+													<label id="price11">1.5&euro;</label>
+												</div>
+											</div>
+										</div>
+										<input id="botao_produto" class="button" onclick="showConfirmation('Tem a certeza que quer pedir a bebida selecionada?', 'askDrink')" type="button" value="Pedir">
+									</div>
+								</div>
+								<!--<input type="button" id="dardos_button" value="Bebidas" onclick='gameDardos()'/>-->
+								<!--<input type="button" id="snooker_button" value="Aperitivos" onclick='gameSnooker()'/>-->
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+
+
+									 <!--"textb.value = value++"-->
+									 <!--textb.value = (+textb.value+1)-->
+
+
+								</div>
+							</div>
+
+<!--****************************************************************************************************************************************************************************-->
+<!--                                                                                 
+	INTERAÇÃO SOCIAL                                                                                     -->
+<!--****************************************************************************************************************************************************************************-->
+							<div id="interacaoInside">
+								<div class="sectionTitle">
+									<h2>Intera&ccedil;&atilde;o Social</h2>
+								</div>
+
+								<input type="button" id="interacao_offer" value="Oferecer bebida" onclick="interacaoOferecer()"/>
+								<input type="button" id="interacao_myOffers" value="Ofertas" onclick="interacaoOfertas()"/>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+							</div>
+
+							<div id="interacaoOffer">
+								<div class="sectionTitle">
+									<h2>Intera&ccedil;&atilde;o Social</h2>
+								</div>
+
+								<div id="interacaoOfferMap">
+									<div onclick="chooseChair(1,1)" id="t11"></div>
+									<div onclick="chooseChair(1,2)" id="t12"></div>
+									<div onclick="chooseChair(1,3)" id="t13"></div>
+									<div onclick="chooseChair(1,4)" id="t14"></div>
+
+									<div onclick="chooseChair(2,1)" id="t21"></div>
+									<div onclick="chooseChair(2,2)" id="t22"></div>
+									<div onclick="chooseChair(2,3)" id="t23"></div>
+									<div onclick="chooseChair(2,4)" id="t24"></div>
+
+									<div onclick="chooseChair(3,1)" id="t31"></div>
+									<div onclick="chooseChair(3,2)" id="t32"></div>
+									<div onclick="chooseChair(3,3)" id="t33"></div>
+								</div>
+
+								<!--<label>Mesa</label>
+								<input type="button" class="minus" onclick="decrementaMesa(tableVal.value)">
+								<input type="number" id="tableVal" name="name" value="1" />
+								<input type="button" class="plus" onclick="incrementaMesa(tableVal.value)"></br>
+
+								<label>Cadeira</label>
+								<input type="button" class="minus" onclick="decrementaCadeira(chairVal.value)">
+								<input type="number" id="chairVal" name="name" value="1" />
+								<input type="button" class="plus" onclick="incrementaCadeira(chairVal.value)"></br>
+
+								<input type="button" id="map" class="button" value="Ver mapa" onclick="showMap()"/>-->
+								<input type="button" id="offerForward" class="button" value="Escolher bebida" onclick="showConfirmation('Tem a certeza que quer oferecer uma bebida &agrave; pessoa do lugar selecionado?', 'showPedidoMenu')"/>
+							</div>
+
+							<div id="interacaoMyOffers">
+								<div class="sectionTitle">
+									<h2>Intera&ccedil;&atilde;o Social</h2>
+								</div>
+								
+								<table style="width: 220px;">
+									<tr id="linha_principal_2">
+										<th style="width: 50px;" class="header_table_2">Bebida</th>
+										<th style="width: 115px;">Oferecida por<th>
+									</tr>
+
+									<tr>
+										<td>Coca-Cola</td>
+										<td>Mesa: 1 Cadeira: 3</td>
+										<td id="drink0">
+											<input type="button" class="button rejectOffer" value="Rejeitar" onclick="rejectOffer('0')"/>
+											<input type="button" class="button acceptOffer" class="button" value="Aceitar" onclick="acceptOffer('0')"/>
+										</td>
+									</tr>
+
+									<tr>
+										<td>B!</td>
+										<td>Mesa: 2 Cadeira: 2</td>
+										<td id="drink1">
+											<input type="button" class="button rejectOffer" value="Rejeitar" onclick="rejectOffer('1')"/>
+											<input type="button" class="button acceptOffer" value="Aceitar" onclick="acceptOffer('1')"/>
+										</td>
+									</tr>
+								</table>
+								<input type="button" id="map" class="button" value="Ver mapa" onclick="showMapOffered()"/>
+							</div>
+
+							<div id="mapBox">
+								<img src="images/map.png">
+								<input type="button" id="mapBoxClose" value="X" onclick="mapBoxClose()"/>
+							</div>
+
+							<div id="mapBoxOffered">
+								<img src="images/mapOffered.png">
+								<input type="button" id="mapBoxOfferedClose" value="X" onclick="mapBoxOfferedClose()"/>
+							</div>
+
+
+							<!-- FIM INTERACAO SOCIAL-->
+
+							<div id="b_menu_container">
+								<div class="sectionTitle">
+									<h2>Inicio</h2>
+								</div>
+								<div id="b_menu_entry">Pedido</div>
+								<img id="swipe" src="images/swipe.png"></img>
+								<div class="musica_rodape">
+									 <div class="text_wrapper"></div>
+								</div>
+							</div>	
+
+							<div id="confirmationBox">
+								<label></label></br>
+								<input type="button" id="confNo" value="N&atilde;o">
+								<input type="button" id="confYes" value="Sim">
+							</div>
+
+<!--****************************************************************************************************************************************************************************-->
+<!--                                                                                 
+	CONTA                                                                                     -->
+<!--****************************************************************************************************************************************************************************-->							
+							
+							
+							<div id="b_menu_conta">
+								<div class="sectionTitle">
+									<h2>Conta</h2>
+								</div>
+								
+								<div id="conta_inside"></div>
+								<div id="conta_msg">
+									<label>O seu pagamento foi efetuado com sucesso. Obrigado!</label></br>
+									<input type="button" id="confirmaConta" value="Fechar" onclick="fechaConta()"/>
+								</div>
+								
+								<div id="conta_pagaMB">
+									<table>
+										<tr>
+											<td id="7">7</td>
+											<td id="8">8</td>
+											<td id="9">9</td>
+										</tr>
+										<tr>
+											<td id="4">4</td>
+											<td id="5">5</td>
+											<td id="6">6</td>
+										</tr>
+										<tr>
+											<td id="1">1</td>
+											<td id="2">2</td>
+											<td id="3">3</td>
+										</tr>
+									</table>
+									
+									<input id="MBcode" type="password" maxlength="4" readonly="readonly"/></br>
+									<input type="button" value="OK" onclick="efetuaPagamento()"/>
+									<input onclick="deleteMBcode()" type="button" value="APAGAR"/>
+								</div>
+								
+								<input id="pagaDinheiro" type='button' class='button' value='Pagar em dinheiro' onclick="showConfirmation('Deseja efetuar o pagamento?', 'pagaDinheiro')"/>
+								<input id="pagaMB" type='button' class='button' value='Pagar com multibanco' onclick="pagaMB()">
+							</div>
+						</div>
+
+						<div class="table_right" id="b_right">
+							<label id="bottom_number">1</label>
+							<div id="allInfo">
+								<table id="tableInfo">
+									<tr>
+										<th>Cliente Info</th>
+									</tr>
+									<tr id="tr_conta">
+										<td class="normais">Conta</td>
+									</tr>
+									<tr id="tr_dardos">
+										<td class="normais" onclick='gameDardos()'>
+											Dardos <label style="color:#2ECC71; font-size:6px;"> - Dispon&iacute;vel</label>
+										</td>
+									</tr>
+									<tr id="tr_snooker">
+										<td class="normais" onclick='gameSnooker()'>
+											Snooker <label style="color:#2ECC71; font-size:6px;"> - Dispon&iacute;vel</label>
+										</td>
+									</tr>
+									<tr id="tr_premios">
+										<td class="normais">Premios</td>
+									</tr>
+									<tr id="tr_bebidasrecebidas">
+										<td id="especial">Bebidas Recebidas</td>
+									</tr>
+								</table>
+							</div>
+						</div>	
+					</div>
+					
+					<div id="right" class="user_space">
+						<div id="r_left"></div>
+						<div id="r_center"></div>
+						<div class="table_right" id="r_right">
+							<label id="right_number">4</label>
+						</div>
+					</div>
+				</div>	
+			</div>	
+		</div>
+	</body>
+</html>
